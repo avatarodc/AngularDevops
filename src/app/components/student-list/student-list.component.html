@@ -1,0 +1,40 @@
+<div class="p-6">
+    <h2 class="text-2xl font-bold mb-6">Liste des Étudiants</h2>
+
+    <app-student-form
+        [student]="selectedStudent"
+        (studentSubmitted)="selectedStudent = null">
+    </app-student-form>
+
+    <div class="mt-6">
+        <table class="w-full border-collapse border border-gray-300">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="border border-gray-300 p-2 text-left">ID</th>
+                    <th class="border border-gray-300 p-2 text-left">Prénom</th>
+                    <th class="border border-gray-300 p-2 text-left">Nom</th>
+                    <th class="border border-gray-300 p-2 text-left">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of students" class="hover:bg-gray-50">
+                    <td class="border border-gray-300 p-2">{{student.id}}</td>
+                    <td class="border border-gray-300 p-2">{{student.firstName}}</td>
+                    <td class="border border-gray-300 p-2">{{student.lastName}}</td>
+                    <td class="border border-gray-300 p-2">
+                        <button
+                            class="bg-blue-500 text-white px-3 py-1 rounded mr-2"
+                            (click)="onEdit(student)">
+                            Modifier
+                        </button>
+                        <button
+                            class="bg-red-500 text-white px-3 py-1 rounded"
+                            (click)="onDelete(student.id)">
+                            Supprimer
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
